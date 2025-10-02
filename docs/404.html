@@ -4,7 +4,12 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script type="text/javascript">
-    window.location.replace('/HomeSales/index.html#' + window.location.pathname.substring(1));
+    // Get the full path including the base
+    var fullPath = window.location.pathname + window.location.search;
+    // Construct the new URL with the hash
+    var newUrl = '/HomeSales/index.html#' + fullPath;
+    // Redirect
+    window.location.replace(newUrl);
   </script>
 </head>
 <body>
