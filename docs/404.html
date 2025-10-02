@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script type="text/javascript">
+    // Get the base path from the current URL
+    var path = window.location.pathname;
+    var base = path.substring(0, path.lastIndexOf('/HomeSales/') + '/HomeSales/'.length);
+    // Redirect to the index.html with the correct path
+    window.location.replace(base + 'index.html' + window.location.search + window.location.hash + window.location.pathname.substring(base.length));
+  </script>
+</head>
+<body>
+</body>
+</html>

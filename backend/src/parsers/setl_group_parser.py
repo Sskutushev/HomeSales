@@ -34,6 +34,39 @@ class SetlGroupParser(BaseParser):
                 "images": ["https://setlgroup.ru/upload/iblock/61b/61b8f1b83d98d1c21a3f3b8e8f8d8f8d.jpg"],
                 "preview_image": "https://setlgroup.ru/upload/iblock/61b/61b8f1b83d98d1c21a3f3b8e8f8d8f8d.jpg",
                 "description": "Квартира у парка."
+            },
+            {
+                "complex_name": "Riverside",
+                "district": "Петроградский",
+                "rooms": 3,
+                "area": 80.0,
+                "price": 25000000,
+                "price_per_sqm": 312500,
+                "images": ["https://setlgroup.ru/upload/iblock/a88/a88d4a38ef9c58a8a15b2424e9ab02b7.jpg"],
+                "preview_image": "https://setlgroup.ru/upload/iblock/a88/a88d4a38ef9c58a8a15b2424e9ab02b7.jpg",
+                "description": "Просторная квартира с видом на реку."
+            },
+            {
+                "complex_name": "Green Park",
+                "district": "Приморский",
+                "rooms": 2,
+                "area": 60.0,
+                "price": 18000000,
+                "price_per_sqm": 300000,
+                "images": ["https://setlgroup.ru/upload/iblock/61b/61b8f1b83d98d1c21a3f3b8e8f8d8f8d.jpg"],
+                "preview_image": "https://setlgroup.ru/upload/iblock/61b/61b8f1b83d98d1c21a3f3b8e8f8d8f8d.jpg",
+                "description": "Квартира рядом с парком и метро."
+            },
+            {
+                "complex_name": "City View",
+                "district": "Центральный",
+                "rooms": 1,
+                "area": 40.0,
+                "price": 12000000,
+                "price_per_sqm": 300000,
+                "images": ["https://setlgroup.ru/upload/iblock/a88/a88d4a38ef9c58a8a15b2424e9ab02b7.jpg"],
+                "preview_image": "https://setlgroup.ru/upload/iblock/a88/a88d4a38ef9c58a8a15b2424e9ab02b7.jpg",
+                "description": "Стильная студия в центре города."
             }
         ]
         return fake_listings
