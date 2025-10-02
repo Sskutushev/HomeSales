@@ -4,20 +4,7 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // https://github.com/rafgraph/spa-github-pages
-    // This script takes the current url and converts the path and query
-    // string into just the hash fragment, but only if the url does not
-    // already contain a hash fragment.
-
-    var path = window.location.pathname;
-    var query = window.location.search;
-    var fragment = window.location.hash;
-
-    // If the URL doesn't already have a hash, add one and redirect
-    if (!fragment) {
-      window.location.replace(window.location.origin + '/HomeSales/index.html#' + path + query);
-    }
+    window.location.replace('/HomeSales/index.html#' + window.location.pathname.substring(1));
   </script>
 </head>
 <body>
