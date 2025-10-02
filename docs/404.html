@@ -4,11 +4,19 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script type="text/javascript">
-    // Get the base path from the current URL
+    // Single Page Apps for GitHub Pages
+    // https://github.com/rafgraph/spa-github-pages
+    // This script takes the current url and converts the path and query
+    // string into just the hash fragment, but only if the url does not
+    // already contain a hash fragment.
+
     var path = window.location.pathname;
-    var base = path.substring(0, path.lastIndexOf('/HomeSales/') + '/HomeSales/'.length);
-    // Redirect to the index.html with the correct path
-    window.location.replace(base + 'index.html' + window.location.search + window.location.hash + window.location.pathname.substring(base.length));
+    var query = window.location.search;
+    var fragment = window.location.hash;
+
+    if (!fragment) {
+      window.location.replace(window.location.origin + window.location.pathname + window.location.search + '#' + window.location.pathname + window.location.search);
+    }
   </script>
 </head>
 <body>

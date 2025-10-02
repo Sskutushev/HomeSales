@@ -34,7 +34,7 @@ class TelegramChannelPublisher:
         print(f"--- Generated post: {post_text[:100].encode('ascii', 'ignore').decode('ascii')}... ---")
 
         # 2. Create deep-linked Mini App URL
-        web_app_url = f"{MINI_APP_BASE_URL}listing/{listing.id}"
+        web_app_url = f"{MINI_APP_BASE_URL}#/listing/{listing.id}"
 
         # 3. Create the button
         keyboard = [
