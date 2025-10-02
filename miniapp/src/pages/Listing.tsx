@@ -19,6 +19,7 @@ interface ListingDetail {
 
 const Listing: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  console.log('Listing ID from useParams:', id);
   const [listing, setListing] = useState<ListingDetail | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
