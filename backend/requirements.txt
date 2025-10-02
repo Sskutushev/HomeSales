@@ -1,0 +1,14 @@
+fastapi==0.104.1
+uvicorn==0.24.0.post1
+pydantic==2.5.2
+pydantic-settings==2.1.0
+SQLAlchemy==2.0.23
+asyncpg==0.29.0
+redis==5.0.1
+python-gemini-api==0.1.0 # Placeholder, actual library name might vary
+python-telegram-bot==20.7
+requests==2.31.0
+python-dotenv==1.0.0
+celery==5.3.6
+feedparser==6.0.10
+Pillow==10.2.0

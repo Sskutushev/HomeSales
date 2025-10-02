@@ -7,7 +7,14 @@ services:
       - "8000:8000"
     environment:
       - DATABASE_URL=postgresql://user:pass@db:5432/spb_realty
+      - SQLALCHEMY_DATABASE_URL=postgresql+asyncpg://user:pass@db:5432/spb_realty
+      - ASYNC_DATABASE_URL=postgresql+asyncpg://user:pass@db:5432/spb_realty
       - REDIS_URL=redis://redis:6379
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHANNEL_ID=${TELEGRAM_CHANNEL_ID}
+      - CIAN_API_KEY=${CIAN_API_KEY}
+      - YANDEX_API_KEY=${YANDEX_API_KEY}
     depends_on:
       - db
       - redis
@@ -19,24 +26,53 @@ services:
     build: ./backend
     environment:
       - DATABASE_URL=postgresql://user:pass@db:5432/spb_realty
+      - SQLALCHEMY_DATABASE_URL=postgresql+asyncpg://user:pass@db:5432/spb_realty
+      - ASYNC_DATABASE_URL=postgresql+asyncpg://user:pass@db:5432/spb_realty
       - REDIS_URL=redis://redis:6379
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHANNEL_ID=${TELEGRAM_CHANNEL_ID}
+      - CIAN_API_KEY=${CIAN_API_KEY}
+      - YANDEX_API_KEY=${YANDEX_API_KEY}
     depends_on:
       - db
       - redis
-    command: celery -A tasks.parse_sources worker --loglevel=info
+    command: python -m celery -A tasks.parse_sources worker --loglevel=info
   
   celery_beat:
     build: ./backend
     environment:
       - DATABASE_URL=postgresql://user:pass@db:5432/spb_realty
+      - SQLALCHEMY_DATABASE_URL=postgresql+asyncpg://user:pass@db:5432/spb_realty
+      - ASYNC_DATABASE_URL=postgresql+asyncpg://user:pass@db:5432/spb_realty
       - REDIS_URL=redis://redis:6379
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHANNEL_ID=${TELEGRAM_CHANNEL_ID}
+      - CIAN_API_KEY=${CIAN_API_KEY}
+      - YANDEX_API_KEY=${YANDEX_API_KEY}
     depends_on:
       - db
       - redis
-    command: celery -A tasks.parse_sources beat --loglevel=info
+    command: python -m celery -A tasks.parse_sources beat --loglevel=info
+
+  frontend:
+    build:
+      context: ./miniapp
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./miniapp:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_BASE_URL=http://backend:8000/api
+    command: npm run dev
   
   db:
     image: postgres:15
+    ports:
+      - "5433:5432"
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
