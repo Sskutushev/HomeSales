@@ -14,8 +14,9 @@
     var query = window.location.search;
     var fragment = window.location.hash;
 
+    // If the URL doesn't already have a hash, add one and redirect
     if (!fragment) {
-      window.location.replace(window.location.origin + window.location.pathname + window.location.search + '#' + window.location.pathname + window.location.search);
+      window.location.replace(window.location.origin + '/HomeSales/index.html#' + path + query);
     }
   </script>
 </head>
