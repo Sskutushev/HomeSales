@@ -4,7 +4,7 @@ services:
   backend:
     build: ./backend
     ports:
-      - "8000:8000"
+      - "8001:8001"
     environment:
       - DATABASE_URL=postgresql://user:pass@db:5432/spb_realty
       - SQLALCHEMY_DATABASE_URL=postgresql+asyncpg://user:pass@db:5432/spb_realty
@@ -20,7 +20,7 @@ services:
       - redis
     volumes:
       - ./backend:/app
-    command: uvicorn src.main:app --host 0.0.0.0 --reload
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8001 --reload
   
   celery_worker:
     build: ./backend
@@ -61,13 +61,13 @@ services:
       context: ./miniapp
       dockerfile: Dockerfile
     ports:
-      - "5173:5173"
+      - "3000:3000"
     volumes:
       - ./miniapp:/app
       - /app/node_modules
     environment:
-      - VITE_API_BASE_URL=http://backend:8000/api
-    command: npm run dev
+      - VITE_API_BASE_URL=http://backend:8001/api
+    command: npm run dev -- --port 3000
   
   db:
     image: postgres:15
