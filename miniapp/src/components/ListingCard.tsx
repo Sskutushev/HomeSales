@@ -27,7 +27,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
       <p className="text-gray-600">Комнат: {rooms}</p>
       <p className="text-gray-600">Площадь: {area} м²</p>
       <p className="text-lg font-bold mt-2">Цена: {price.toLocaleString()} ₽</p>
-      <a href={`/listing/${id}`} className="text-blue-500 hover:underline mt-4 inline-block">Подробнее</a>
+      <a href={`#/listing/${id}`} className="text-blue-500 hover:underline mt-4 inline-block">Подробнее</a>
     </div>
   );
 };
